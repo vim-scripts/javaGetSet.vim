@@ -1,0 +1,39 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=436
+
+This will create Java Get/set methods for a bean.  
+The motivation was a fellow who told me Rational Rose was superior to vim because it could automatically create get/set methods for a bean given properties. So I cranked this out.
+
+This requires Java Syntax be on and works with 6.1
+The process is to first create your properties (for example: int id; String userName;) and  let this make the methods. It requires some manual work, but not much.  You need to put the datatype in buffer 'a' and the property in buffer 'b'  For example, say you have this:
+
+public String foo, bar, baz;
+
+Yank word "String" into buffer 'a' and if you want to make get/set for foo,
+yank word "foo" into buffer 'b'.  Then go to where you want the get/set
+methods and type <ctl>gs and the methods with Javadoc are created. 
+To do "bar" next, just replace buffer 'b' with "bar".  So, with "String" in buffer 'a' and 'foo' in buffer 'b' Doing this: <ctl>gs  will give you this:
+
+
+   /**
+    * Get foo.
+    *
+    * @return foo as a String 
+    */
+   public String  getFoo()
+   {
+      return(foo);
+   }
+
+   /**
+    * Set foo.
+    *
+    * @param The foo as a String 
+    */
+   public void setFoo(String  foo)
+   {
+      this.foo = foo;
+      return;
+   }
+
+
+Pretty cool, huh?
